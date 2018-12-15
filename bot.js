@@ -25,6 +25,7 @@ if (process.env.NODE_ENV === "production") {
 		var url_handler = function(req, res){
 
 			var url = res;
+			alert(url);
 			var token = url.searchParams.get("token");
 
 			if (!token) {
