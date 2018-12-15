@@ -37,7 +37,7 @@ router.get("/callback", catchAsync(async (req, res) => {
     });
   const user = await user_response.json();
 
-  res.redirect(`/?token=${json.access_token}&user_id=${user.id}`);
+  res.redirect(`/?user_id=${user.id}`);
 }));
 
 module.exports = router;
