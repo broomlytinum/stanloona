@@ -7,6 +7,8 @@ const fetch = require("node-fetch");
 const btoa = require("btoa");
 const { catchAsync } = require("../client/build/script/utils.js");
 
+const CLIENT_ID = process.env.CLIENT_ID;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const redirect = encodeURIComponent("http://localhost:8080/api/discord/callback");
 
 router.get("/login", (req, res) => {
