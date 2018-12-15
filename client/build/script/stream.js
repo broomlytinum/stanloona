@@ -1,4 +1,7 @@
-var load_player = function(document) {
+var url = new URL(window.location.href);
+var user_id = url.searchParams.get("user_id");
+
+if (user_id) {
 	var tag = document.createElement('script');
 
 	tag.src = "https://www.youtube.com/iframe_api";
@@ -7,15 +10,15 @@ var load_player = function(document) {
 
 	var player;
 	function onYouTubeIframeAPIReady() {
-	player = new YT.Player('player', {
-	  height: '585',
-	  width: '960',
-	  videoId: '846cjX0ZTrk',
-	  events: {
-	    'onReady': onPlayerReady,
-	    'onStateChange': onPlayerStateChange
-	  }
-	});
+		player = new YT.Player('player', {
+		  height: '585',
+		  width: '960',
+		  videoId: '846cjX0ZTrk',
+		  events: {
+		    'onReady': onPlayerReady,
+		    'onStateChange': onPlayerStateChange
+		  }
+		});
 	}
 
 	function onPlayerReady(event) {
@@ -37,5 +40,4 @@ var load_player = function(document) {
 			alert("Video interrupted...Please refresh.");
 		}
 	}
-
 }
