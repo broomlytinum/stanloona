@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const app = express();
 
-const stream = require("client/build/script/stream");
+const stream = require("/client/build/script/stream.js");
 
 app.use("/api/discord", require("./api/discord"));
 
