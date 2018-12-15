@@ -2,8 +2,6 @@ const express = require("express");
 const path = require("path");
 const app = express();
 
-app.listen(process.env.PORT || 8080);
-
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 
@@ -13,6 +11,8 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-app.use("/api/discord", require("./api/discord.js"));
+app.use("/api/discord", require("./api/discord"));
+
+app.listen(process.env.PORT || 8080);
 
 // client.login(process.env.BOT_TOKEN);
