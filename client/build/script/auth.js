@@ -1,6 +1,6 @@
 var url = new URL(window.location.href);
-var token = url.searchParams.get("token");
+var user_id = url.searchParams.get("user_id");
 
-if (token) {
-	alert(token);
+if (user_id) {
+	alert(user_id);
 }
