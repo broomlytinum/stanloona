@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+var DiscordStrategy = require("passport-discord").Strategy;
 const client = new Discord.Client();
 
 const express = require("express");
@@ -26,4 +27,19 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-client.login(process.env.BOT_TOKEN);
+passport.use(new DiscordStrategy({
+    clientID: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    callbackURL: process.env.CALLBACK_URL
+},
+function(accessToken, refreshToken, profile, cb) {
+    if (err)
+        return done(err);
+ 
+    User.findOrCreate({ discordId: profile.id }, function(err, user) {
+    	alert(user.id);
+        return cb(err, user);
+    });
+}));
+
+// client.login(process.env.BOT_TOKEN);
