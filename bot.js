@@ -1,8 +1,8 @@
-app.use("/api/discord", require("./api/discord"));
-
 const express = require("express");
 const path = require("path");
 const app = express();
+
+app.use("/api/discord", require("./api/discord"));
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
