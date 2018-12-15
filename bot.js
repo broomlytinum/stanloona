@@ -16,7 +16,8 @@ if (process.env.NODE_ENV === "production") {
 
 	var document_handler = function(req, res){
 
-		document = res;
+		var document = res;
+		console.log(document);
 
 		app.get('/', (req, res) => {
 			res.send("id: " + req.query.id);
@@ -25,7 +26,8 @@ if (process.env.NODE_ENV === "production") {
 		var url_handler = function(req, res){
 
 			var url = res;
-			alert(url);
+			console.log(url);
+
 			var token = url.searchParams.get("token");
 
 			if (!token) {
@@ -35,7 +37,7 @@ if (process.env.NODE_ENV === "production") {
 
 					if (!user.id) {
 
-				  		alert(user.id);
+				  		console.log(user.id);
 				  		stream.load_player(document);
 				  	}
 				}
