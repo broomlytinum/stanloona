@@ -1,4 +1,4 @@
-var load_player = function() {
+var load_player = function(document) {
 	var tag = document.createElement('script');
 
 	tag.src = "https://www.youtube.com/iframe_api";
