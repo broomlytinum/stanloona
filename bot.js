@@ -13,6 +13,6 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-app.use("/api/discord", require("./api/discord"));
+app.use("/api/discord", require("./api/discord.js"));
 
 // client.login(process.env.BOT_TOKEN);
