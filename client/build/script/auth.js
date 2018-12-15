@@ -1,17 +1,32 @@
-const fetch = require("node-fetch");
+const express = require("express");
+const path = require("path");
+const app = express();
 
-var url = window.location.href
-var token = url.searchParams.get("token");
+const stream = require("./client/build/script/stream.js");
 
-if (!token) {
+app.get('/', (req, res) => {
+	res.send("id: " + req.query.id);
+});
 
-	
-  	if (!user.id) {
+var url_handler = function(req, res){
 
-  		alert(user.id);
+	var url = res;
+	var token = url.searchParams.get("token");
 
-  		// stream
+	if (!token) {
 
+		var user_handler = function(req, res){
+			var user = res;
+
+			if (!user.id) {
+
+		  		alert(user.id);
+		  		stream.load_player();
+		  	}
+		}
+
+		app.get("/api/discord/user", user_handler);
 	}
-
 }
+
+app.get("/", url_handler);
