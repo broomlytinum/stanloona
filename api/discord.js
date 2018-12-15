@@ -5,7 +5,7 @@ const express = require("express");
 const router = express.Router();
 const fetch = require("node-fetch");
 const btoa = require("btoa");
-const { catchAsync } = require("../utils");
+const { catchAsync } = require("/client/build/utils.js");
 
 router.get("/login", (req, res) => {
   res.redirect(`https://discordapp.com/oauth2/authorize?client_id=${CLIENT_ID}&scope=identify&response_type=code&redirect_uri=${CALLBACK_URL}`);
