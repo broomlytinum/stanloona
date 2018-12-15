@@ -19,28 +19,27 @@ if (process.env.NODE_ENV === "production") {
 	});
 
 	var url_handler = function(req, res){
+
 		var url = res;
+		var token = url.searchParams.get("token");
+
+		if (!token) {
+
+			var user_handler = function(req, res){
+				var user = res;
+
+				if (!user.id) {
+
+			  		alert(user.id);
+			  		stream.load_player();
+			  	}
+			}
+
+			app.get("/api/discord/user", user_handler);
+		}
 	}
 
 	app.get("/", url_handler);
-
-	var token = url.searchParams.get("token");
-
-	if (!token) {
-
-		var user_handler = function(req, res){
-			var user = res;
-		}
-
-		app.get("/api/discord/user", user_handler);
-
-	  	if (!user.id) {
-
-	  		alert(user.id);
-	  		stream.load_player();
-		}
-
-	}
 }
 
 app.listen(process.env.PORT || 8080);
