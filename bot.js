@@ -18,21 +18,21 @@ if (process.env.NODE_ENV === "production") {
 	res.send("id: " + req.query.id);
 	});
 
-	app.get("/", url_handler);
-
 	var url_handler = function(req, res){
 		var url = res;
 	}
+
+	app.get("/", url_handler);
 
 	var token = url.searchParams.get("token");
 
 	if (!token) {
 
-		app.get("/api/discord/user", user_handler);
-
 		var user_handler = function(req, res){
 			var user = res;
 		}
+
+		app.get("/api/discord/user", user_handler);
 
 	  	if (!user.id) {
 
