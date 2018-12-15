@@ -30,4 +30,17 @@ router.get("/callback", catchAsync(async (req, res) => {
   res.redirect(`/?token=${json.access_token}`);
 }));
 
+router.get("/user", catchAsync(async (req, res) => {
+	const token = req.params.token;
+	const response = await fetch(`https://discordapp.com/api/users/@me`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  	const user = await response.json();
+  	res.send(user);
+}));
+
 module.exports = router;
