@@ -13,45 +13,6 @@ if (process.env.NODE_ENV === "production") {
 	app.get('*', (req, res) => {
 		res.sendFile(path.resolve(__dirname, "client", "build", "home.html"));
 	});
-
-	var document_handler = function(req, res){
-
-		var document = res;
-		console.log(document);
-
-		app.get('/', (req, res) => {
-			res.send("id: " + req.query.id);
-		});
-
-		var url_handler = function(req, res){
-
-			var url = res;
-			console.log(url);
-
-			var token = url.searchParams.get("token");
-
-			if (!token) {
-
-				var user_handler = function(req, res){
-					var user = res;
-
-					if (!user.id) {
-
-				  		console.log(user.id);
-				  		stream.load_player(document);
-				  	}
-				}
-
-				app.get("/api/discord/user", user_handler);
-			}
-		}
-
-		app.get("/", url_handler);
-
-	}
-
-	app.get("*", document_handler);
-	
 }
 
 app.listen(process.env.PORT || 8080);
