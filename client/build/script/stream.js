@@ -31,7 +31,7 @@ if (user_id) { // user_id
 	if (event.data == 1 && state == 0) {
 		state = 1;
 		alert("Video playing...");
-		$.post(`https://stan-loona.herokuapp.com/api/discord/aster/post`,
+		$.post(`https://stan-loona.herokuapp.com/api/discord/aster`,
 			{data: {user_id: user_id, amount: 100},
 			success: function (data) {
 				alert("Post success!");
