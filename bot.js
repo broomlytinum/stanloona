@@ -2,8 +2,7 @@ const express = require("express");
 const path = require("path");
 const app = express();
 
-var $ = require("jquery")
-XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+var http = require("http");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
@@ -32,15 +31,12 @@ client.on("ready", () => {
 client.on("message", msg => {
   if (msg.content === "loona.aster") {
 
-  	$.ajax({
-		url: `https://stan-loona.herokuapp.com/api/discord/aster`,
-		type: "GET",
-		data: {"user_id": String(msg.author.id)},
-		success: function (res) {
-			msg.reply(`You have ${res.amount_aster} aster. Thank you for streaming!`);
-		},
-		contentType: 'application/json',
-	});
+  	http.get({
+  		host: `https://stan-loona.herokuapp.com`,
+		path: `/api/discord/aster?user_id=${String(msg.author.id)}`
+	}, function (res) {
+		msg.reply(`You have ${res.amount_aster} aster. Thank you for streaming!`);
+	},);
 
   }
 });
