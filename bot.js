@@ -34,9 +34,10 @@ client.on("message", msg => {
 
   	console.log(msg.channel);
   	console.log(msg.channel.id);
-  	var server_id = client.channels.get(msg.channel.id).guild_id;
-  	console.log(server_id);
-
+  	var channel = client.channels.get(msg.channel.id);
+  	console.log(channel);
+  	console.log(channel.guild);
+  	console.log(channel.guild.id);
   }
 
   if (msg.content === "loona.me") {
