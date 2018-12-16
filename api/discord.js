@@ -57,21 +57,24 @@ router.post("/aster", catchAsync(async (req, res) => {
 	} else {
 		sql_client.query(`INSERT INTO users (user_id, amount_aster) VALUES (${req.body.user_id}, ${req.body.amount});`, (err, res) => {});
 	}
+
+	res.send({success: true})
 }));
 
 router.get("/aster", catchAsync(async (req, res) => {
 	//console.log(req.query);
 	// `SELECT * FROM users WHERE (user_id->${req.body.user_id}) IS NOT NULL;`
-	
+
   	sql_client.query(`SELECT * FROM users;`, (err, res) => {
   		//console.log(res);
   		if (res) {
 			for (let row of res.rows) {
 				if (row.user_id == req.body.user_id) {
-					res.send(row.amount_aster);
+					return res.send({amount_aster: row.amount_aster, success: true});
 				}
 		    	//console.log(JSON.stringify(row));
 		  	}
+		  	return res.send({success: true})
 		}
 	});
 }));
