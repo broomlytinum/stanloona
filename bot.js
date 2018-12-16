@@ -36,7 +36,11 @@ client.on("message", msg => {
 		path: `/api/discord/aster?user_id=${String(msg.author.id)}`
 	}, function (res) {
 		res.on("data", function(chunk) {
-	    	msg.reply(`You have ${chunk.amount_aster} aster. Thank you for streaming!`);
+			if (chunk.amount_aster) {
+	    		msg.reply(`You have ${chunk.amount_aster} aster. Thank you for streaming!`);
+	    	} else {
+	    		msg.reply(`You have 0 aster. Visit https://stan-loona.herokuapp.com/ and watch the video completely to earn some.`);
+	    	}
 	  	});
 	});
   }
