@@ -2,11 +2,13 @@ const express = require("express");
 const path = require("path");
 const app = express();
 
+const bodyParser = require("body-parser");
+
 app.use("/api/discord", require("./api/discord"));
 
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static("client/build"));
-	app.use(express.bodyParser());
+	app.use(bodyParser.json());
 
 	const path = require("path");
 	app.get('*', (req, res) => {
