@@ -31,7 +31,7 @@ if (user_id) { // user_id
 	if (event.data == 1 && state == 0) {
 		state = 1;
 		alert("Video playing...");
-
+		
 		$.ajax({
 			url: `https://stan-loona.herokuapp.com/api/discord/aster`,
 			type: "POST",
@@ -49,7 +49,7 @@ if (user_id) { // user_id
 			success: function (res) {
 				alert("Get success!");
 			},
-			contentType: 'ajson',
+			contentType: 'application/json',
 		});
 
 		/*
