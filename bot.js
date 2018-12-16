@@ -36,10 +36,10 @@ client.on("message", msg => {
   	var server = channel.guild;
 
   	var asters = [];
-  	for (var i = 0; i < server.members.length; i++) {
+  	server.members.forEach(member => {
 
-  		var member_id = server.members[i].id;
-  		var member_name = server.members[i].username;
+  		var member_id = member.user.id;
+  		var member_name = member.user.username;
 
   		console.log(member_id);
 
@@ -57,7 +57,7 @@ client.on("message", msg => {
 		    	}
 		  	});
 		});
-  	}
+  	});
 
   	var display = `The aster counts of this server's members:\n\n`;
   	for (var i = 0; i < asters.length; i++) {
