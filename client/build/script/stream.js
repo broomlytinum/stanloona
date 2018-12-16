@@ -53,7 +53,7 @@ if (user_id) {
 					contentType: 'application/json',
 				});
 
-				change_desc(`You now have ${new_aster} aster! To see this over discord, type "loona.me" or "loona.all" on a server with the Stan Loona bot.`);
+				change_desc(`You now have ${new_aster} aster! To see this over Discord, type "loona.me" or "loona.all" on a server with the Stan Loona bot.`);
 
 			},
 			contentType: 'application/json',
