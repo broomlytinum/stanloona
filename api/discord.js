@@ -78,7 +78,7 @@ router.get("/aster", catchAsync(async (req, res) => {
 		return null;
 	});
 
-	return res.json(JSON.stringify({amount_aster: value, success: true}))
+	return res.json({amount_aster: value, success: true})
 }));
 
 module.exports = router;
