@@ -65,18 +65,20 @@ router.get("/aster", catchAsync(async (req, res) => {
 	//console.log(req.query);
 	// `SELECT * FROM users WHERE (user_id->${req.body.user_id}) IS NOT NULL;`
 
-  	sql_client.query(`SELECT * FROM users;`, (err, res) => {
+  	var value = sql_client.query(`SELECT * FROM users;`, (err, res) => {
   		//console.log(res);
   		if (res) {
 			for (let row of res.rows) {
 				if (row.user_id == req.body.user_id) {
-					return res.send({amount_aster: row.amount_aster, success: true});
+					return row.amount_aster;
 				}
 		    	//console.log(JSON.stringify(row));
 		  	}
-		  	return res.send({success: true})
 		}
+		return null;
 	});
+
+	return res.send({amount_aster: value, success: true})
 }));
 
 module.exports = router;
