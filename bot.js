@@ -71,10 +71,11 @@ client.on("message", msg => {
 
 					asters.sort(compare);
 
-		    		var display = `The aster counts of this server's members:\n\n`;
+		    		var display = `The aster counts of this server's members:\n\n\`\`\``;
 				  	for (var j = 0; j < asters.length; j++) {
 				  		display += `${asters[j].user_name}:\t${asters[j].amount}\n`;
 				  	}
+				  	display += `\`\`\``;
 
 				  	channel.send(display);
 		    	}
