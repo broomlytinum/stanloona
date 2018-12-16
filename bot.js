@@ -32,12 +32,10 @@ client.on("message", msg => {
 
   if (msg.content === "loona.all") {
 
-  	console.log(msg.channel);
-  	console.log(msg.channel.id);
   	var channel = client.channels.get(msg.channel.id);
-  	console.log(channel);
-  	console.log(channel.guild);
-  	console.log(channel.guild.id);
+  	var server = channel.guild;
+  	console.log(server.members);
+
   }
 
   if (msg.content === "loona.me") {
