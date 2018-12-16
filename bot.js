@@ -36,6 +36,7 @@ client.on("message", msg => {
 		path: `/api/discord/aster?user_id=${String(msg.author.id)}`
 	}, function (res) {
 		res.on("data", function(chunk) {
+			console.log(chunk);
 	    	msg.reply(`You have ${chunk.amount_aster} aster. Thank you for streaming!`);
 	  	});
 	});
