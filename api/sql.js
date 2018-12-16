@@ -12,7 +12,7 @@ const client = new Client({
 
 client.connect();
 
-router.post("/aster/post", catchAsync(async (req, res) => {
+router.post("/aster", catchAsync(async (req, res) => {
   if (!req.query.code) throw new Error("NoCodeProvided");
 
   client.query(`INSERT INTO aster_bank (user_id, amount) VALUES (${req.body.user_id}, ${req.body.amount}) ON CONFLICT (user_id) DO UPDATE SET amount = excluded.amount;`, (err, res) => {
@@ -20,7 +20,7 @@ router.post("/aster/post", catchAsync(async (req, res) => {
 	});
 }));
 
-router.get("/aster/get", catchAsync(async (req, res) => {
+router.get("/aster", catchAsync(async (req, res) => {
   if (!req.query.code) throw new Error("NoCodeProvided");
 
   client.query(`SELECT * FROM aster_bank ORDER BY user_id;`, (err, res) => {
