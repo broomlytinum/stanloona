@@ -77,13 +77,13 @@ router.get("/aster", catchAsync(async (req, res) => {
 				if (row.user_id == req.query.user_id) {
 					console.log(row.amount_aster);
 					found = true;
-					res.json(JSON.stringify({amount_aster: row.amount_aster, success: true}));
+					res.json({amount_aster: row.amount_aster, success: true});
 					break;
 				}
 		    	//console.log(JSON.stringify(row));
 		  	}
 		  	if (!found) {
-		  		res.json(JSON.stringify({success: true}));
+		  		res.json({success: true});
 		  	}
 		}
 	});
