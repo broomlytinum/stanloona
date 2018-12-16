@@ -48,6 +48,8 @@ client.on("message", msg => {
   		var member_id = members[i].user.id;
   		var member_name = members[i].user.username;
 
+  		console.log(member_name);
+
   		https.get({
 	  		host: `stan-loona.herokuapp.com`,
 			path: `/api/discord/aster?user_id=${String(member_id)}`
