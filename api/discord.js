@@ -47,7 +47,7 @@ router.get("/callback", catchAsync(async (req, res) => {
 }));
 
 router.post("/aster", catchAsync(async (req, res) => {
-	console.log(req.body);
+	//console.log(req.body);
 
 	if (req.body.update) {
 		sql_client.query(`UPDATE users SET amount_aster = ${req.body.amount} WHERE user_id = '${req.body.user_id}';`, (err, q_res) => {});
@@ -61,8 +61,6 @@ router.post("/aster", catchAsync(async (req, res) => {
 router.get("/aster", catchAsync(async (req, res) => {
 	//console.log(req.query);
 	// `SELECT * FROM users WHERE (user_id->${req.body.user_id}) IS NOT NULL;`
-
-	console.log("start");
 
   	sql_client.query(`SELECT * FROM users;`, (err, q_res) => {
   		//console.log(res);
@@ -84,8 +82,6 @@ router.get("/aster", catchAsync(async (req, res) => {
 		  	}
 		}
 	});
-
-	console.log("end");
 
 	// res.json(JSON.stringify({amount_aster: value, success: true}))
 }));

@@ -1,7 +1,15 @@
 var url = new URL(window.location.href);
 var user_id = url.searchParams.get("user_id");
 
-if (user_id) { // user_id
+function change_desc(text) {
+	document.getElementById("desc").textContent = text;
+}
+
+if (user_id) {
+
+	var reward = 100;
+
+	change_desc(`Please press play and watch the video to the end without pausing, if you want ${reward} aster, that is.`);
 	
 	var tag = document.createElement('script');
 
@@ -45,7 +53,7 @@ if (user_id) { // user_id
 					contentType: 'application/json',
 				});
 
-				alert(`You now have ${new_aster} aster! To view this over discord, type "loona.aster" on a server with the bot.`);
+				change_desc(`You now have ${new_aster} aster! To see this over discord, type "loona.me" or "loona.all" on a server with the Stan Loona bot.`);
 
 			},
 			contentType: 'application/json',
@@ -58,18 +66,17 @@ if (user_id) { // user_id
 
 	var state = 0;
 	function onPlayerStateChange(event) {
-	if (event.data == 1 && state == 0) {
-		state = 1;
-		award_aster(1);
-	}
-	else if (event.data == 0 && state == 1) {
-		state = 2;
-		//alert("Video complete! Thank you!");
-		award_aster(100);
-	}
+		if (event.data == 1 && state == 0) {
+			state = 1;
+		}
+		else if (event.data == 0 && state == 1) {
+			state = 2;
+			award_aster(reward);
+		}
 		else if (state == 1) {
 			state = -1;
-			alert("Video interrupted...Please refresh.");
+
+			change_desc(`You interrupted the video! Please refresh to start over.`);
 		}
 	}
 }

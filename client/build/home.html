@@ -2,6 +2,11 @@
 	<head>
 		<title>Stream Loona</title>
 		<style>
+			html, body {
+			    margin:0;
+			    padding:0;
+			    background-color: #36393f;
+			}
 			.video {
 				display: flex;
 				flex-direction: column;
@@ -9,14 +14,29 @@
 				align-items: center;
 				text-align: center;
 				min-height: 100vh;
+				margin:0;
 			}
 
 			.container {
 	            display: flex;
 	            width: 100%;
-	            padding: 40px 0;
+	            padding: 20px 0;
 	            align-items: center;
 	            justify-content: center;
+	        }
+
+	        .info {
+	            display: flex;
+	            width: 50%;
+	            padding: 40px 0;
+	            line-height: 35px;
+	            color: #fff;
+	            background-color: #586882;
+	            font-family: 'Helvetica', 'Arial', sans-sefir;
+	            font-size: 18px;
+	            display: block;
+	            text-decoration: none;
+	            border-radius: 16px;
 	        }
 	          
 	        .container a {
@@ -28,19 +48,26 @@
 	            font-size: 20px;
 	            display: block;
 	            text-decoration: none;
-	            border-radius: 3px;
+	            border-radius: 8px;
 	        }
 		</style>
 	</head>
 
 	<body>
 		<div class="video">
-			<div class="container">
-          		<a href="/api/discord/login">Login through discord</a>
-			</div>
-			<div id="player">
-				<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-				<script type="text/javascript" src="script/stream.js"></script>
+			<div class="info">
+				<span id="desc">
+					Help stream LOONA videos and earn a useless virtual currency over discord, called "Aster".
+					<br>
+					The video player is only available after following the link below.
+				</span>
+				<div class="container">
+	          		<a href="/api/discord/login">Link to discord</a>
+				</div>
+				<div id="player">
+					<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+					<script type="text/javascript" src="script/stream.js"></script>
+				</div>
 			</div>
 		</div>
 	</body>
