@@ -35,9 +35,8 @@ client.on("message", msg => {
   		host: `stan-loona.herokuapp.com`,
 		path: `/api/discord/aster?user_id=${String(msg.author.id)}`
 	}, function (res) {
-		console.log(res)
 		res.on("data", function(chunk) {
-	    	msg.reply(`You have ${chunk} aster. Thank you for streaming!`);
+	    	msg.reply(`You have ${chunk.amount_aster} aster. Thank you for streaming!`);
 	  	});
 	});
   }
