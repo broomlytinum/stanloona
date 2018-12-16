@@ -29,7 +29,15 @@ client.on("ready", () => {
 });
 
 client.on("message", msg => {
-  if (msg.content === "loona.aster") {
+
+  if (msg.content === "loona.all") {
+
+  	var server_id = client.channels[client.channel_id].guild_id;
+  	console.log(server_id);
+
+  }
+
+  if (msg.content === "loona.me") {
 
   	https.get({
   		host: `stan-loona.herokuapp.com`,
