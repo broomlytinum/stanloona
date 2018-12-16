@@ -59,7 +59,7 @@ router.post("/aster", catchAsync(async (req, res) => {
 router.get("/aster", catchAsync(async (req, res) => {
 	console.log(req.query);
 	// `SELECT * FROM users WHERE (user_id->${req.body.user_id}) IS NOT NULL;`
-  	sql_client.query(`SELECT * FROM users;`, (err, res) => {
+  	sql_client.query(`SELECT * FROM users WHERE user_id = ${req.query.user_id};`, (err, res) => {
   		console.log(res);
   		if (res) {
 			for (let row of res.rows) {
