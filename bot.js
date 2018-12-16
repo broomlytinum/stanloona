@@ -59,13 +59,13 @@ client.on("message", msg => {
 
 		    		function compare(a, b) {
 					  if (a.amount < b.amount)
-					    return -1;
+					    return 1;
 					  if (a.amount > b.amount)
-					    return 1;
-					  if (a.user_name < b.user_name)
-					    return 1;
-					  if (a.user_name > b.user_name)
 					    return -1;
+					  if (a.user_name < b.user_name)
+					    return -1;
+					  if (a.user_name > b.user_name)
+					    return 1;
 					  return 0;
 					}
 
