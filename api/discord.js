@@ -70,7 +70,7 @@ router.get("/aster", catchAsync(async (req, res) => {
   		if (res) {
 			for (let row of res.rows) {
 				console.log(row.user_id);
-				console.log(req.query.user_id);
+				console.log(req);
 				if (row.user_id == req.query.user_id) {
 					console.log(row.amount_aster);
 					return row.amount_aster;
