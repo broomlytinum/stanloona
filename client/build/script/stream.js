@@ -32,31 +32,33 @@ if (user_id) { // user_id
 		state = 1;
 		alert("Video playing...");
 
-		var new_aster = 100;
-		var update = false;
+		
 
-		var current_aster = $.ajax({
+		$.ajax({
 			url: `https://stan-loona.herokuapp.com/api/discord/aster`,
 			type: "GET",
 			data: {user_id: String(user_id)},
 			success: function (res) {
-				alert("Get success!");
-			},
-			contentType: 'application/json',
-		});
 
-		if (current_aster) {
-			alert(current_aster);
-			new_aster += current_aster;
-			update = true;
-		}
+				var new_aster = 100;
+				var update = false;
 
-		$.ajax({
-			url: `https://stan-loona.herokuapp.com/api/discord/aster`,
-			type: "POST",
-			data: JSON.stringify({"user_id": user_id, "amount": new_aster, "update": update}),
-			success: function (res) {
-				alert("Post success!");
+				if (res) {
+					alert(res);
+					new_aster += res;
+					update = true;
+				}
+
+				$.ajax({
+					url: `https://stan-loona.herokuapp.com/api/discord/aster`,
+					type: "POST",
+					data: JSON.stringify({"user_id": user_id, "amount": new_aster, "update": update}),
+					success: function (res) {
+						alert("Post success!");
+					},
+					contentType: 'application/json',
+				});
+
 			},
 			contentType: 'application/json',
 		});
