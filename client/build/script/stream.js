@@ -1,7 +1,8 @@
 var url = new URL(window.location.href);
 var user_id = url.searchParams.get("user_id");
 
-if (user_id) {
+if (user_id) { // user_id
+	
 	var tag = document.createElement('script');
 
 	tag.src = "https://www.youtube.com/iframe_api";
@@ -13,7 +14,7 @@ if (user_id) {
 		player = new YT.Player('player', {
 		  height: '585',
 		  width: '960',
-		  videoId: '846cjX0ZTrk',
+		  videoId: 'cwv0NRhx-tw', // '846cjX0ZTrk',
 		  events: {
 		    'onReady': onPlayerReady,
 		    'onStateChange': onPlayerStateChange
