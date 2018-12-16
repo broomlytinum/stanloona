@@ -35,11 +35,18 @@ client.on("message", msg => {
   	var channel = client.channels.get(msg.channel.id);
   	var server = channel.guild;
 
-  	var asters = [];
+  	var members = [];
   	server.members.forEach(member => {
+  		if (!member.user.bot) {
+  			members.push(member);
+  		}
+  	});
 
-  		var member_id = member.user.id;
-  		var member_name = member.user.username;
+  	var asters = [];
+  	for (var i = 0; i < members.length; i++) {
+
+  		var member_id = members[i].user.id;
+  		var member_name = members[i].user.username;
 
   		console.log(member_id);
 
@@ -55,16 +62,18 @@ client.on("message", msg => {
 		    	} else {
 		    		asters.push({user_id: member_id, amount: 0});
 		    	}
+
+		    	if (asters.length == members.length) {
+		    		var display = `The aster counts of this server's members:\n\n`;
+				  	for (var i = 0; i < asters.length; i++) {
+				  		display += `- ${asters[i].user_id}:\t${asters[i].amount}\n`;
+				  	}
+
+				  	channel.send(display);
+		    	}
 		  	});
 		});
-  	});
-
-  	var display = `The aster counts of this server's members:\n\n`;
-  	for (var i = 0; i < asters.length; i++) {
-  		display += `- ${asters[i].user_id}:\t${asters[i].amount}\n`;
   	}
-
-  	channel.send(display);
 
   }
 
