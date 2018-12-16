@@ -34,7 +34,7 @@ client.on("message", msg => {
 
   	console.log(msg.channel);
   	console.log(msg.channel.id);
-  	var server_id = client.channels[msg.channel.id].guild_id;
+  	var server_id = client.channels.get(msg.channel.id).guild_id;
   	console.log(server_id);
 
   }
