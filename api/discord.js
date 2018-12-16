@@ -51,7 +51,12 @@ router.get("/callback", catchAsync(async (req, res) => {
 
 router.post("/aster", catchAsync(async (req, res) => {
 	console.log(req.body);
-  	sql_client.query(`INSERT INTO users (user_id, amount_aster) VALUES (${req.body.user_id}, ${req.body.amount});`, (err, res) => {
+	if (req.body.update) {
+		var sql_string = `UPDATE users SET amount_aster=${req.body.amount} WHERE user_id=${req.body.user_id};`;
+	} else {
+		var sql_string = `INSERT INTO users (user_id, amount_aster) VALUES (${req.body.user_id}, ${req.body.amount});`;
+	}
+  	sql_client.query(sql_string, (err, res) => {
 		if (err) throw err;
 	});
 }));
@@ -59,11 +64,14 @@ router.post("/aster", catchAsync(async (req, res) => {
 router.get("/aster", catchAsync(async (req, res) => {
 	console.log(req.query);
 	// `SELECT * FROM users WHERE (user_id->${req.body.user_id}) IS NOT NULL;`
-  	sql_client.query(`SELECT * FROM users WHERE user_id = ${req.query.user_id};`, (err, res) => {
-  		console.log(res);
+  	sql_client.query(`SELECT * FROM users;`, (err, res) => {
+  		//console.log(res);
   		if (res) {
 			for (let row of res.rows) {
-		    	console.log(JSON.stringify(row));
+				if (row.user_id == req.body.user_id) {
+					res.send(row.amount_aster);
+				}
+		    	//console.log(JSON.stringify(row));
 		  	}
 		}
 	});
