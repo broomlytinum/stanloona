@@ -45,7 +45,7 @@ if (user_id) { // user_id
 		$.ajax({
 			url: `https://stan-loona.herokuapp.com/api/discord/aster`,
 			type: "GET",
-			data: {user_id: user_id},
+			data: JSON.stringify({"user_id": user_id}),
 			success: function (res) {
 				alert("Get success!");
 			},
