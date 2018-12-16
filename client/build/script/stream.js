@@ -46,6 +46,7 @@ if (user_id) { // user_id
 		});
 
 		if (current_aster) {
+			alert(current_aster);
 			new_aster += current_aster;
 			update = true;
 		}
