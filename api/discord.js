@@ -52,15 +52,15 @@ router.get("/callback", catchAsync(async (req, res) => {
 router.post("/aster", catchAsync(async (req, res) => {
 	console.log(req.body);
 
-	var sql_string;
 	if (req.body.update) {
-		sql_string = `UPDATE users SET amount_aster=${req.body.amount} WHERE user_id=${req.body.user_id};`;
+		sql_client.query(`UPDATE users SET amount_aster=${req.body.amount} WHERE user_id=${req.body.user_id};`, (err, res) => {
+			if (err) throw err;
+		});
 	} else {
-		sql_string = `INSERT INTO users (user_id, amount_aster) VALUES (${req.body.user_id}, ${req.body.amount});`;
+		sql_client.query(`INSERT INTO users (user_id, amount_aster) VALUES (${req.body.user_id}, ${req.body.amount});`, (err, res) => {
+			if (err) throw err;
+		});
 	}
-  	sql_client.query(sql_string, (err, res) => {
-		if (err) throw err;
-	});
 }));
 
 router.get("/aster", catchAsync(async (req, res) => {
