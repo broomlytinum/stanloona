@@ -43,8 +43,9 @@ if (user_id) { // user_id
 				var new_aster = 100;
 				var update = false;
 
+				alert(res);
+
 				if (res) {
-					alert(res);
 					new_aster += res;
 					update = true;
 				}
