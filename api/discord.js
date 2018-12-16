@@ -51,13 +51,13 @@ router.get("/callback", catchAsync(async (req, res) => {
 
 router.post("/aster", catchAsync(async (req, res) => {
 	console.log(req.body);
-  	sql_client.query(`INSERT INTO aster_bank (user_id, amount) VALUES (${req.body.user_id}, ${req.body.amount}) ON CONFLICT (user_id) DO UPDATE SET amount = excluded.amount;`, (err, res) => {
+  	sql_client.query(`INSERT INTO users (user_id, amount_aster) VALUES (${req.body.user_id}, ${req.body.amount}) ON CONFLICT (user_id) DO UPDATE SET amount_aster = excluded.amount_aster;`, (err, res) => {
 		if (err) throw err;
 	});
 }));
 
 router.get("/aster", catchAsync(async (req, res) => {
-  sql_client.query(`SELECT * FROM aster_bank ORDER BY user_id;`, (err, res) => {
+  sql_client.query(`SELECT * FROM users ORDER BY user_id;`, (err, res) => {
 	  for (let row of res.rows) {
 	    console.log(JSON.stringify(row));
 	  }
