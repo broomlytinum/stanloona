@@ -65,6 +65,8 @@ router.get("/aster", catchAsync(async (req, res) => {
 	//console.log(req.query);
 	// `SELECT * FROM users WHERE (user_id->${req.body.user_id}) IS NOT NULL;`
 
+	console.log("start")
+
   	var value = sql_client.query(`SELECT * FROM users;`, (err, res) => {
   		//console.log(res);
   		if (res) {
@@ -83,7 +85,9 @@ router.get("/aster", catchAsync(async (req, res) => {
 
 	console.log(value);
 
-	return res.json(JSON.stringify({amount_aster: value, success: true}))
+	console.log("end");
+
+	res.json(JSON.stringify({amount_aster: value, success: true}))
 }));
 
 module.exports = router;
