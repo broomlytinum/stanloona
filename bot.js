@@ -62,8 +62,8 @@ client.on("message", msg => {
 
 		    	if (asters.length == members.length) {
 		    		var display = `The aster counts of this server's members:\n\n`;
-				  	for (var i = 0; i < asters.length; i++) {
-				  		display += `- ${asters[i].user_name}:\t${asters[i].amount}\n`;
+				  	for (var j = 0; j < asters.length; j++) {
+				  		display += `- ${asters[j].user_name}:\t${asters[j].amount}\n`;
 				  	}
 
 				  	channel.send(display);
