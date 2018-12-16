@@ -45,8 +45,8 @@ client.on("message", msg => {
   	var asters = [];
   	for (var i = 0; i < members.length; i++) {
 
-  		var member_id = members[i].id;
-  		var member_name = members[i].username;
+  		var member_id = members[i].user.id;
+  		var member_name = members[i].user.username;
 
   		console.log(member_name);
 
@@ -57,9 +57,9 @@ client.on("message", msg => {
 			res.on("data", function(chunk) {
 				var data = JSON.parse(chunk.toString());
 				if (data.amount_aster) {
-		    		asters.push({user_name: member_name, amount: data.amount_aster});
+		    		asters.push({user_name: members[asters.length].user.username, amount: data.amount_aster});
 		    	} else {
-		    		asters.push({user_name: member_name, amount: 0});
+		    		asters.push({user_name: members[asters.length].user.username, amount: 0});
 		    	}
 
 		    	if (asters.length == members.length) {
