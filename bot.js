@@ -58,15 +58,15 @@ client.on("message", msg => {
 				var data = JSON.parse(chunk.toString());
 				if (data.amount_aster) {
 					console.log(data.amount_aster);
-		    		asters.push({user_id: member_id, amount: data.amount_aster});
+		    		asters.push({user_name: member_name, amount: data.amount_aster});
 		    	} else {
-		    		asters.push({user_id: member_id, amount: 0});
+		    		asters.push({user_name: member_name, amount: 0});
 		    	}
 
 		    	if (asters.length == members.length) {
 		    		var display = `The aster counts of this server's members:\n\n`;
 				  	for (var i = 0; i < asters.length; i++) {
-				  		display += `- ${asters[i].user_id}:\t${asters[i].amount}\n`;
+				  		display += `- ${asters[i].user_name}:\t${asters[i].amount}\n`;
 				  	}
 
 				  	channel.send(display);
