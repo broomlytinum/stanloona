@@ -50,8 +50,9 @@ router.get("/callback", catchAsync(async (req, res) => {
 }));
 
 router.post("/aster", catchAsync(async (req, res) => {
-  sql_client.query(`INSERT INTO aster_bank (user_id, amount) VALUES (${req.body.user_id}, ${req.body.amount}) ON CONFLICT (user_id) DO UPDATE SET amount = excluded.amount;`, (err, res) => {
-	  if (err) throw err;
+	console.log(req.body);
+  	sql_client.query(`INSERT INTO aster_bank (user_id, amount) VALUES (${req.body.user_id}, ${req.body.amount}) ON CONFLICT (user_id) DO UPDATE SET amount = excluded.amount;`, (err, res) => {
+		if (err) throw err;
 	});
 }));
 
