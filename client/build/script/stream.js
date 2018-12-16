@@ -45,8 +45,8 @@ if (user_id) { // user_id
 
 				alert(res);
 
-				if (res.amount_aster != null) {
-					new_aster += res.amount_aster;
+				if (res["amount_aster"] != null) {
+					new_aster += res["amount_aster"];
 					update = true;
 					alert(new_aster);
 				}
