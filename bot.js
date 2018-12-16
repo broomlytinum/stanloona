@@ -41,6 +41,8 @@ client.on("message", msg => {
   		var member_id = server.members[i].id;
   		var member_name = server.members[i].username;
 
+  		console.log(member_id);
+
   		https.get({
 	  		host: `stan-loona.herokuapp.com`,
 			path: `/api/discord/aster?user_id=${String(member_id)}`
@@ -48,6 +50,7 @@ client.on("message", msg => {
 			res.on("data", function(chunk) {
 				var data = JSON.parse(chunk.toString());
 				if (data.amount_aster) {
+					console.log(data.amount_aster);
 		    		asters.push({user_id: member_id, amount: data.amount_aster});
 		    	} else {
 		    		asters.push({user_id: member_id, amount: 0});
