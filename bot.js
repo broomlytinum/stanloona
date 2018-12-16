@@ -6,6 +6,7 @@ app.use("/api/discord", require("./api/discord"));
 
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static("client/build"));
+	app.use(express.bodyParser());
 
 	const path = require("path");
 	app.get('*', (req, res) => {
