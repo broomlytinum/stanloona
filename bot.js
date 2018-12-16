@@ -36,7 +36,7 @@ client.on("message", msg => {
   	var server = channel.guild;
 
   	var asters = [];
-  	for (int i = 0; i < server.members.length; i++) {
+  	for (var i = 0; i < server.members.length; i++) {
 
   		var member_id = server.members[i].id;
   		var member_name = server.members[i].username;
@@ -57,7 +57,7 @@ client.on("message", msg => {
   	}
 
   	var display = `The aster counts of this server's members:\n\n`;
-  	for (int i = 0; i < asters.length; i++) {
+  	for (var i = 0; i < asters.length; i++) {
   		display += `- ${asters[i].user_id}:\t${asters[i].amount}\n`;
   	}
 
