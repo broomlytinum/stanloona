@@ -38,7 +38,7 @@ if (user_id) { // user_id
 			url: `https://stan-loona.herokuapp.com/api/discord/aster`,
 			type: "GET",
 			data: {user_id: String(user_id)},
-			success: function (res, status) {
+			success: function (res) {
 
 				var new_aster = 100;
 				var update = false;
