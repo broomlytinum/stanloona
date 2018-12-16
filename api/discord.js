@@ -59,10 +59,7 @@ router.post("/aster", catchAsync(async (req, res) => {
 router.get("/aster", catchAsync(async (req, res) => {
 	console.log(req.body);
   	sql_client.query(`SELECT ${req.body.user_id} FROM users ORDER BY amount_aster;`, (err, res) => {
-		for (let row of res.rows) {
-			console.log(row);
-	    	console.log(JSON.stringify(row));
-	  	}
+  		console.log(res);
 	});
 }));
 
