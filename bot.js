@@ -56,6 +56,21 @@ client.on("message", msg => {
 		    	}
 
 		    	if (asters.length == members.length) {
+
+		    		function compare(a, b) {
+					  if (a.amount < b.amount)
+					    return -1;
+					  if (a.amount > b.amount)
+					    return 1;
+					  if (a.user_name < b.user_name)
+					    return 1;
+					  if (a.user_name > b.user_name)
+					    return -1;
+					  return 0;
+					}
+
+					asters.sort(compare);
+
 		    		var display = `The aster counts of this server's members:\n\n`;
 				  	for (var j = 0; j < asters.length; j++) {
 				  		display += `- ${asters[j].user_name}:\t${asters[j].amount}\n`;
