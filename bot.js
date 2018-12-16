@@ -3,6 +3,7 @@ const path = require("path");
 const app = express();
 
 app.use("/api/discord", require("./api/discord"));
+app.use("/api/sql", require("./api/sql"));
 
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static("client/build"));

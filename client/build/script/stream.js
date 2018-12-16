@@ -31,6 +31,22 @@ if (user_id) { // user_id
 	if (event.data == 1 && state == 0) {
 		state = 1;
 		alert("Video playing...");
+		$.post({
+			url: `${window.location.href}/api/sql/aster`,
+			data: {user_id: user_id, amount: 100},
+			success: function (data) {
+				alert("Post success!");
+			},
+			dataType: "json"
+		});
+		$.get({
+			url: `${window.location.href}/api/sql/aster`,
+			data: {},
+			success: function (data) {
+				alert("Get success!");
+			},
+			dataType: "json"
+		});
 	}
 	else if (event.data == 0 && state == 1) {
 		state = 2;
