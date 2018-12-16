@@ -69,7 +69,10 @@ router.get("/aster", catchAsync(async (req, res) => {
   		//console.log(res);
   		if (res) {
 			for (let row of res.rows) {
+				console.log(row.user_id);
+				console.log(req.body.user_id);
 				if (row.user_id == req.body.user_id) {
+					console.log(row.amount_aster);
 					return row.amount_aster;
 				}
 		    	//console.log(JSON.stringify(row));
@@ -78,7 +81,7 @@ router.get("/aster", catchAsync(async (req, res) => {
 		return null;
 	});
 
-	return res.json({amount_aster: value, success: true})
+	return res.json(JSON.stringify({amount_aster: value, success: true}))
 }));
 
 module.exports = router;
