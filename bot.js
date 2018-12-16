@@ -32,7 +32,8 @@ client.on("message", msg => {
 
   if (msg.content === "loona.all") {
 
-  	var server_id = client.channels[msg.channelID].guild_id;
+  	console.log(msg.channel_id);
+  	var server_id = client.channels[msg.channel_id].guild_id;
   	console.log(server_id);
 
   }
