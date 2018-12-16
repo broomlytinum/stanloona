@@ -43,11 +43,11 @@ if (user_id) { // user_id
 				var new_aster = 100;
 				var update = false;
 
-				alert(res.body);
-				alert(res.body.amount_aster);
+				alert(res.status);
+				alert(res.status.amount_aster);
 
-				if (res.body.amount_aster != null) {
-					new_aster += res.body.amount_aster;
+				if (res.status.amount_aster != null) {
+					new_aster += res.status.amount_aster;
 					update = true;
 				}
 
