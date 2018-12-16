@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const app = express();
 
-var http = require("http");
+var http = require("https");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
@@ -31,8 +31,8 @@ client.on("ready", () => {
 client.on("message", msg => {
   if (msg.content === "loona.aster") {
 
-  	http.get({
-  		host: `https://stan-loona.herokuapp.com`,
+  	https.get({
+  		host: `stan-loona.herokuapp.com`,
 		path: `/api/discord/aster?user_id=${String(msg.author.id)}`
 	}, function (res) {
 		msg.reply(`You have ${res.amount_aster} aster. Thank you for streaming!`);
