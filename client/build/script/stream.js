@@ -22,6 +22,36 @@ if (user_id) { // user_id
 		});
 	}
 
+	function award_aster(reward) {
+		$.ajax({
+			url: `https://stan-loona.herokuapp.com/api/discord/aster`,
+			type: "GET",
+			data: {"user_id": String(user_id)},
+			success: function (res) {
+
+				var new_aster = reward;
+				var update = false;
+
+				if (res.amount_aster) {
+					new_aster += res.amount_aster;
+					update = true;
+				}
+
+				$.ajax({
+					url: `https://stan-loona.herokuapp.com/api/discord/aster`,
+					type: "POST",
+					data: JSON.stringify({"user_id": String(user_id), "amount": new_aster, "update": update}),
+					success: function (res) {},
+					contentType: 'application/json',
+				});
+
+				alert(`You now have ${new_aster} aster! To view this over discord, type "loona.aster" on a server with the bot.`);
+
+			},
+			contentType: 'application/json',
+		});
+	}
+
 	function onPlayerReady(event) {
 		// do nothing
 	}
@@ -30,55 +60,12 @@ if (user_id) { // user_id
 	function onPlayerStateChange(event) {
 	if (event.data == 1 && state == 0) {
 		state = 1;
-		alert("Video playing...");
-
-		
-
-		$.ajax({
-			url: `https://stan-loona.herokuapp.com/api/discord/aster`,
-			type: "GET",
-			data: {"user_id": String(user_id)},
-			success: function (res) {
-
-				var new_aster = 100;
-				var update = false;
-
-				alert(res);
-
-				if (res.amount_aster) {
-					new_aster += res.amount_aster;
-					update = true;
-					alert(new_aster);
-				}
-
-				$.ajax({
-					url: `https://stan-loona.herokuapp.com/api/discord/aster`,
-					type: "POST",
-					data: JSON.stringify({"user_id": String(user_id), "amount": new_aster, "update": update}),
-					success: function (res) {
-						alert("Post success!");
-					},
-					contentType: 'application/json',
-				});
-
-			},
-			contentType: 'application/json',
-		});
-
-		/*
-		$.get({
-			url: `https://stan-loona.herokuapp.com/api/discord/aster`,
-			data: {},
-			success: function (data) {
-				alert("Get success!");
-			},
-			dataType: "json"
-		});
-		*/
+		award_aster(1);
 	}
 	else if (event.data == 0 && state == 1) {
 		state = 2;
-		alert("Video complete! Thank you!");
+		//alert("Video complete! Thank you!");
+		award_aster(100);
 	}
 		else if (state == 1) {
 			state = -1;

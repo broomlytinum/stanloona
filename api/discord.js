@@ -1,6 +1,3 @@
-const Discord = require("discord.js");
-const client = new Discord.Client();
-
 const express = require("express");
 const router = express.Router();
 const fetch = require("node-fetch");
@@ -55,7 +52,7 @@ router.post("/aster", catchAsync(async (req, res) => {
 	if (req.body.update) {
 		sql_client.query(`UPDATE users SET amount_aster = ${req.body.amount} WHERE user_id = '${req.body.user_id}';`, (err, q_res) => {});
 	} else {
-		sql_client.query(`INSERT INTO users (user_id, amount_aster) VALUES (${req.body.user_id}, ${req.body.amount});`, (err, q_res) => {});
+		sql_client.query(`INSERT INTO users (user_id, amount_aster) VALUES ('${req.body.user_id}', ${req.body.amount});`, (err, q_res) => {});
 	}
 
 	res.json({success: true})
