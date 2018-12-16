@@ -8,6 +8,7 @@ app.use("/api/discord", require("./api/discord"));
 
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static("client/build"));
+	app.use(bodyParser.urlencoded({extended: false}))
 	app.use(bodyParser.json());
 
 	const path = require("path");
