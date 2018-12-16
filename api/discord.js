@@ -67,7 +67,7 @@ router.get("/aster", catchAsync(async (req, res) => {
 
 	console.log("start");
 
-  	var value = await sql_client.query(`SELECT * FROM users;`, catchAsync(async (err, q_res) => {
+  	sql_client.query(`SELECT * FROM users;`, (err, q_res) => {
   		//console.log(res);
   		if (q_res) {
   			var found = false;
@@ -77,15 +77,16 @@ router.get("/aster", catchAsync(async (req, res) => {
 				if (row.user_id == req.query.user_id) {
 					console.log(row.amount_aster);
 					found = true;
-					res.json(JSON.stringify({amount_aster: value, success: true}))
+					res.json(JSON.stringify({amount_aster: row.amount_aster, success: true}));
+					break;
 				}
 		    	//console.log(JSON.stringify(row));
 		  	}
 		  	if (!found) {
-		  		res.json(JSON.stringify({success: true}))
+		  		res.json(JSON.stringify({success: true}));
 		  	}
 		}
-	}));
+	});
 
 	console.log("end");
 
