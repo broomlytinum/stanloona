@@ -42,14 +42,7 @@ client.on("message", msg => {
   		}
   	});
 
-  	var asters = [];
-  	for (var i = 0; i < members.length; i++) {
-
-  		var member_id = members[i].user.id;
-  		var member_name = members[i].user.username;
-
-  		console.log(member_name);
-
+  	function do_request(i) {
   		https.get({
 	  		host: `stan-loona.herokuapp.com`,
 			path: `/api/discord/aster?user_id=${String(member_id)}`
@@ -57,9 +50,9 @@ client.on("message", msg => {
 			res.on("data", function(chunk) {
 				var data = JSON.parse(chunk.toString());
 				if (data.amount_aster) {
-		    		asters.push({user_name: members[asters.length].user.username, amount: data.amount_aster});
+		    		asters.push({user_name: members[i].user.username, amount: data.amount_aster});
 		    	} else {
-		    		asters.push({user_name: members[asters.length].user.username, amount: 0});
+		    		asters.push({user_name: members[i].user.username, amount: 0});
 		    	}
 
 		    	if (asters.length == members.length) {
@@ -74,6 +67,16 @@ client.on("message", msg => {
 		});
   	}
 
+  	var asters = [];
+  	for (var i = 0; i < members.length; i++) {
+
+  		var member_id = members[i].user.id;
+  		var member_name = members[i].user.username;
+
+  		console.log(member_name);
+
+  		do_request(i);
+  	}
   }
 
   if (msg.content === "loona.me") {
