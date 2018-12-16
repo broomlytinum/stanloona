@@ -54,7 +54,7 @@ if (user_id) { // user_id
 				$.ajax({
 					url: `https://stan-loona.herokuapp.com/api/discord/aster`,
 					type: "POST",
-					data: JSON.stringify({"user_id": user_id, "amount": new_aster, "update": update}),
+					data: JSON.stringify({"user_id": String(user_id), "amount": new_aster, "update": update}),
 					success: function (res) {
 						alert("Post success!");
 					},
