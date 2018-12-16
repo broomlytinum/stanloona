@@ -34,7 +34,34 @@ client.on("message", msg => {
 
   	var channel = client.channels.get(msg.channel.id);
   	var server = channel.guild;
-  	console.log(server.members);
+
+  	var asters = [];
+  	for (int i = 0; i < server.members.length; i++) {
+
+  		var member_id = server.members[i].id;
+  		var member_name = server.members[i].username;
+
+  		https.get({
+	  		host: `stan-loona.herokuapp.com`,
+			path: `/api/discord/aster?user_id=${String(member_id)}`
+		}, function (res) {
+			res.on("data", function(chunk) {
+				var data = JSON.parse(chunk.toString());
+				if (data.amount_aster) {
+		    		asters.push({user_id: member_id, amount: data.amount_aster});
+		    	} else {
+		    		asters.push({user_id: member_id, amount: 0});
+		    	}
+		  	});
+		});
+  	}
+
+  	var display = `The aster counts of this server's members:\n\n`;
+  	for (int i = 0; i < asters.length; i++) {
+  		display += `- ${asters[i].user_id}:\t${asters[i].amount}\n`;
+  	}
+
+  	channel.send(display);
 
   }
 
