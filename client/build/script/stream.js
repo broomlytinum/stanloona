@@ -33,10 +33,10 @@ if (user_id) { // user_id
 		alert("Video playing...");
 		$.ajax({
 			url: `https://stan-loona.herokuapp.com/api/discord/aster`,
-			type: "POST",
-			data: JSON.stringify({"user_id": user_id, "amount": 100}),
+			type: "GET",
+			data: JSON.stringify({"user_id": user_id}),
 			success: function (res) {
-				alert("Post success!");
+				alert("Get success!");
 			},
 			contentType: 'application/json',
 		});
