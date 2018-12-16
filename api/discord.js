@@ -61,10 +61,11 @@ router.get("/aster", catchAsync(async (req, res) => {
 	// `SELECT * FROM users WHERE (user_id->${req.body.user_id}) IS NOT NULL;`
   	sql_client.query(`SELECT ${req.body.user_id} FROM users ORDER BY amount_aster;`, (err, res) => {
   		console.log(res);
-		for (let row of res.rows) {
-
-	    	console.log(JSON.stringify(row));
-	  	}
+  		if (res) {
+			for (let row of res.rows) {
+		    	console.log(JSON.stringify(row));
+		  	}
+		}
 	});
 }));
 

@@ -46,10 +46,11 @@ if (user_id) { // user_id
 			url: `https://stan-loona.herokuapp.com/api/discord/aster`,
 			type: "GET",
 			data: JSON.stringify({"user_id": user_id}),
+			processData: true,
 			success: function (res) {
 				alert("Get success!");
 			},
-			contentType: 'json',
+			contentType: 'application/json',
 		});
 
 		/*
