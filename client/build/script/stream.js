@@ -38,7 +38,7 @@ if (user_id) { // user_id
 			success: function (res) {
 				alert("Post success!");
 			},
-			contentType: 'json',
+			contentType: 'application/json',
 		});
 
 		/*

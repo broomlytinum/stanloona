@@ -4,17 +4,17 @@ const app = express();
 
 const bodyParser = require("body-parser");
 
-app.use("/api/discord", require("./api/discord"));
-
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static("client/build"));
-	app.use(bodyParser.urlencoded({extended: false}))
+	app.use(bodyParser.urlencoded({extended: true}))
 	app.use(bodyParser.json());
 
 	const path = require("path");
 	app.get('*', (req, res) => {
 		res.sendFile(path.resolve(__dirname, "client", "build", "home.html"));
 	});
+
+	app.use("/api/discord", require("./api/discord"));
 }
 
 app.listen(process.env.PORT || 8080);
