@@ -2,6 +2,9 @@ const express = require("express");
 const path = require("path");
 const app = express();
 
+var $ = require("jquery")
+XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+
 const Discord = require("discord.js");
 const client = new Discord.Client();
 
