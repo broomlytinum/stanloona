@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const app = express();
 
-var http = require("https");
+var https = require("https");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
