@@ -53,8 +53,7 @@ router.post("/aster", catchAsync(async (req, res) => {
 	console.log(req.body);
 
 	if (req.body.update) {
-		console.log(`UPDATE users SET amount_aster = ${req.body.amount} WHERE user_id = '${req.body.user_id};'`);
-		sql_client.query(`UPDATE users SET amount_aster = ${req.body.amount} WHERE user_id = '${req.body.user_id};'`, (err, q_res) => {});
+		sql_client.query(`UPDATE users SET amount_aster = ${req.body.amount} WHERE user_id = '${req.body.user_id}';`, (err, q_res) => {});
 	} else {
 		sql_client.query(`INSERT INTO users (user_id, amount_aster) VALUES (${req.body.user_id}, ${req.body.amount});`, (err, q_res) => {});
 	}
