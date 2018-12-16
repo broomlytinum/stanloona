@@ -45,8 +45,8 @@ client.on("message", msg => {
   	var asters = [];
   	for (var i = 0; i < members.length; i++) {
 
-  		var member_id = members[i].user.id;
-  		var member_name = members[i].user.username;
+  		var member_id = members[i].id;
+  		var member_name = members[i].username;
 
   		console.log(member_name);
 

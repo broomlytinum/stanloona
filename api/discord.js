@@ -67,10 +67,7 @@ router.get("/aster", catchAsync(async (req, res) => {
   		if (q_res) {
   			var found = false;
 			for (let row of q_res.rows) {
-				console.log(row.user_id);
-				console.log(req.query.user_id);
 				if (row.user_id == req.query.user_id) {
-					console.log(row.amount_aster);
 					found = true;
 					res.json({amount_aster: row.amount_aster, success: true});
 					break;
