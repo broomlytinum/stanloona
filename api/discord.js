@@ -58,14 +58,13 @@ router.post("/aster", catchAsync(async (req, res) => {
 
 router.get("/aster", catchAsync(async (req, res) => {
 	console.log(req.body);
-  	sql_client.query(`SELECT * FROM users WHERE (user_id->${req.body.user_id}) IS NOT NULL;`, (err, res) => {
+	// `SELECT * FROM users WHERE (user_id->${req.body.user_id}) IS NOT NULL;`
+  	sql_client.query(`SELECT ${req.body.user_id} FROM users ORDER BY amount_aster;`, (err, res) => {
   		console.log(res);
-  		if (res.rows) {
-			for (let row of res.rows) {
-				console.log(row);
-		    	console.log(JSON.stringify(row));
-		  	}
-		}
+		for (let row of res.rows) {
+
+	    	console.log(JSON.stringify(row));
+	  	}
 	});
 }));
 
