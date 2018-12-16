@@ -28,11 +28,11 @@ client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.on("message", msg => {
+client.on("message", function(user, userID, channelID, msg, evt) {
 
   if (msg.content === "loona.all") {
 
-  	var server_id = client.channels[client.channelID].guild_id;
+  	var server_id = client.channels[channelID].guild_id;
   	console.log(server_id);
 
   }
