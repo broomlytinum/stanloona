@@ -7,6 +7,8 @@ function change_desc(text) {
 
 if (user_id) {
 
+	$(".container").remove();
+
 	var reward = 100;
 
 	change_desc(`Please press play and watch the video to the end without pausing, if you want ${reward} aster, that is.`);
