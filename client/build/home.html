@@ -2,11 +2,18 @@
 	<head>
 		<title>Stream Loona</title>
 		<style>
-			html, body {
+			html {
 			    margin:0;
 			    padding:0;
-			    background-color: #36393f;
 			}
+
+			body {
+				margin:0;
+			    padding:0;
+				background-image: url("assets/background.png");
+  				background-repeat: repeat;
+			}
+
 			.video {
 				display: flex;
 				flex-direction: column;
@@ -25,31 +32,46 @@
 	            justify-content: center;
 	        }
 
+	        .container a {
+	        	text-decoration: none;
+	        }
+
 	        .info {
 	            display: flex;
 	            width: 50%;
 	            padding: 40px 0;
 	            line-height: 35px;
-	            color: #fff;
-	            background-color: #586882;
-	            font-family: 'Helvetica', 'Arial', sans-sefir;
+	            color: #e8eef7;
+	            font-family: 'Trebuchet MS', sans-sefir;
 	            font-size: 18px;
 	            display: block;
 	            text-decoration: none;
-	            border-radius: 16px;
+	            border-radius: 0px;
 	        }
-	          
-	        .container a {
+
+	        .connect {
 	            background: #7289DA;
-	            padding: 0 20px;
-	            line-height: 35px;
-	            color: #fff;
-	            font-family: 'Helvetica', 'Arial', sans-sefir;
-	            font-size: 20px;
-	            display: block;
-	            text-decoration: none;
-	            border-radius: 8px;
+	            padding: 15 20px;
+	            border-radius: 3px;
 	        }
+
+	        .connect img {
+			    bottom: 25%;
+			    transform: translateY(25%);
+	        }
+
+	        #connect-desc {
+	        	line-height: 35px;
+	            color: #fff;
+	            font-family: 'Trebuchet MS', sans-sefir;
+	            font-size: 18px;
+	            text-decoration: none;
+	            right: 50%;
+			    bottom: 50%;
+			    transform: translate(50%,50%);
+	        }
+
+
 
 		</style>
 	</head>
@@ -63,8 +85,12 @@
 					The video player is only available after following the link below.
 				</span>
 				<div class="container">
-	          		<a href="/api/discord/login">Connect with Discord</a>
-				</div>
+					<a href="/api/discord/login">
+						<div class="connect">
+							<img src="assets/discord_logo.png" width="24", height="24">
+			          		<span id="connect-desc">Connect with Discord</span>
+						</div>
+					</a>
 				<div id="player">
 					<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 					<script type="text/javascript" src="script/stream.js"></script>
