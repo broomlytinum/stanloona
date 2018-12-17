@@ -53,7 +53,11 @@ if (user_id) {
 					contentType: 'application/json',
 				});
 
-				change_desc(`You now have ${new_aster} aster! To see this over Discord, type "loona.me" or "loona.all" on a server with the Stan Loona bot.`);
+				player.css("hidden", true);
+				$("#iframe").css("hidden", false);
+
+				change_desc(`You now have ${new_aster} aster! To see this over Discord, type "loona.me" or "loona.all" on a server with the Stan Loona bot.`
+						  + `<b>Below is now a video that won't reward you with aster, but it would be nice if you watched it anyway before refreshing.`);
 
 			},
 			contentType: 'application/json',
@@ -68,6 +72,7 @@ if (user_id) {
 	function onPlayerStateChange(event) {
 		if (event.data == 1 && state == 0) {
 			state = 1;
+			award_aster(0);
 		}
 		else if (event.data == 0 && state == 1) {
 			state = 2;
