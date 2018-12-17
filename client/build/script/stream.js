@@ -53,7 +53,7 @@ if (user_id) {
 					contentType: 'application/json',
 				});
 
-				player.css("hidden", true);
+				tag.css("hidden", true);
 				$("#iframe").css("hidden", false);
 
 				change_desc(`You now have ${new_aster} aster! To see this over Discord, type "loona.me" or "loona.all" on a server with the Stan Loona bot.`
