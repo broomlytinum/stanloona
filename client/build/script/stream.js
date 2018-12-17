@@ -53,11 +53,11 @@ if (user_id) {
 					contentType: 'application/json',
 				});
 
-				$("#script").css("hidden", true);
-				$("#naverplayer").css("hidden", false);
+				$("#player").hide();
+				$("#naverplayer").show();
 
 				change_desc(`You now have ${new_aster} aster! To see this over Discord, type "loona.me" or "loona.all" on a server with the Stan Loona bot.`
-						  + `<b>Below is now a video that won't reward you with aster, but it would be nice if you watched it anyway before refreshing.`);
+						  + `\nBelow is now a video that won't reward you with aster, but it would be nice if you watched it anyway before refreshing.`);
 
 			},
 			contentType: 'application/json',
