@@ -72,7 +72,6 @@ if (user_id) {
 	function onPlayerStateChange(event) {
 		if (event.data == 1 && state == 0) {
 			state = 1;
-			award_aster(0);
 		}
 		else if (event.data == 0 && state == 1) {
 			state = 2;
