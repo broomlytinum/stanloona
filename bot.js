@@ -73,7 +73,9 @@ client.on("message", msg => {
 
 		    		var display = `The aster counts of this server's members:\n\n\`\`\``;
 				  	for (var j = 0; j < asters.length; j++) {
-				  		display += `${asters[j].user_name}:\t${asters[j].amount}\n`;
+				  		if (asters[j].amount) {
+				  			display += `${asters[j].user_name}:\t${asters[j].amount}\n`;
+				  		}
 				  	}
 				  	display += `\`\`\``;
 
