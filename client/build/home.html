@@ -53,6 +53,7 @@
 	            background: #7289DA;
 	            padding: 15 20px;
 	            border-radius: 3px;
+	            margin: 0 20px;
 	        }
 
 	        .connect img {
@@ -71,6 +72,28 @@
 			    transform: translate(50%,50%);
 	        }
 
+	        .addbot {
+	            background: #151316;
+	            padding: 15 20px;
+	            border-radius: 3px;
+	            margin: 0 20px;
+	        }
+
+	        .addbot img {
+			    bottom: 25%;
+			    transform: translateY(25%);
+	        }
+
+	        #addbot-desc {
+	        	line-height: 35px;
+	            color: #fff;
+	            font-family: 'Trebuchet MS', sans-sefir;
+	            font-size: 18px;
+	            text-decoration: none;
+	            right: 50%;
+			    bottom: 50%;
+			    transform: translate(50%,50%);
+	        }
 
 
 		</style>
@@ -82,13 +105,19 @@
 				<span id="desc">
 					Help stream LOONA videos and earn a useless virtual currency over Discord, called "Aster".
 					<br>
-					The video player is only available after following the link below.
+					The video player is only available after connecting to Discord.
 				</span>
 				<div class="container">
 					<a href="/api/discord/login">
 						<div class="connect">
 							<img src="assets/discord_logo.png" width="24", height="24">
 			          		<span id="connect-desc">Connect with Discord</span>
+						</div>
+					</a>
+					<a href="https://discordapp.com/api/oauth2/authorize?client_id=523312217635160076&permissions=264256&redirect_uri=https%3A%2F%2Fstan-loona.herokuapp.com%2Fapi%2Fdiscord%2Fcallback&scope=bot">
+						<div class="addbot">
+							<img src="assets/discord_logo.png" width="24", height="24">
+			          		<span id="addbot-desc">Add the bot to a server</span>
 						</div>
 					</a>
 				</div>
