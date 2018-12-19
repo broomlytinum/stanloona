@@ -7,7 +7,7 @@ function change_desc(text) {
 
 if (user_id) {
 
-	$(".container").remove();
+	$(".connect").remove();
 
 	var reward = 100;
 
