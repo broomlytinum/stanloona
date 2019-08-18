@@ -24,7 +24,7 @@ if (user_id) {
 		player = new YT.Player('player', {
 		  height: '585',
 		  width: '960',
-		  videoId: 'WX-lpEnIQQk',
+		  videoId: 'BVVfMFS3mgc',
 		  events: {
 		    'onReady': onPlayerReady,
 		    'onStateChange': onPlayerStateChange
